@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harrogate Secondary School</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #0a3d91, #1e66d0);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      width: 90%;
+    }
+
+    img.logo {
+      max-width: 150px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1em;
+      margin-bottom: 30px;
+    }
+
+    .countdown {
+      font-size: 1.8em;
+      font-weight: bold;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 15px 20px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.9em;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="logo" src="https://media.discordapp.net/attachments/1454508361298215005/1466521829270356110/ECO_3.png?ex=697d0c62&is=697bbae2&hm=f04ea54ea84aea9ba336350041ea9675e55b3eef9e11c1da8c196bca785054a3&=&format=webp&quality=lossless" alt="School Logo" />
+    <h1>Harrogate Secondary School</h1>
+    <p>We’re preparing something exciting. Countdown to launch:</p>
+    <div class="countdown" id="countdown">Loading...</div>
+  </div>
+
+  <footer>
+    &copy; 2026 Harrogate Secondary School. All rights reserved.
+  </footer>
+
+  <script>
+    const targetDate = new Date("2026-02-01T15:00:00Z").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference <= 0) {
+        document.getElementById("countdown").innerHTML = "We are live!";
+        return;
+      }
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((difference / (1000 * 60)) % 60);
+      const seconds = Math.floor((difference / 1000) % 60);
+
+      document.getElementById("countdown").innerHTML =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
